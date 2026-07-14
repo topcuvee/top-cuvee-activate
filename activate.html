@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Get Set Up | Top Cuvée Wholesale</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    /* Fonts */
+    --font-display: 'Bebas Neue', 'Arial Black', sans-serif;
+    --font-body: 'Space Grotesk', system-ui, sans-serif;
+
+    /* Brand colours */
+    --color-orange: #FF4E00;
+    --color-orange-dark: #D94200;
+    --color-orange-darker: #B33700;
+    --color-orange-tint: rgba(255,78,0,0.08);
+    --color-yellow: #FFFEBC;
+    --color-green: #3E9900;
+
+    /* Neutrals */
+    --color-black: #0A0A0A;
+    --color-dark-grey: #3D3D3D;
+    --color-mid-grey: #7A7A7A;
+    --color-light-grey: #D4D4D4;
+    --color-off-white: #F7F7F2;
+    --color-white: #FFFFFF;
+
+    /* Aliases */
+    --fg-1: var(--color-black);
+    --fg-2: var(--color-dark-grey);
+    --fg-3: var(--color-mid-grey);
+    --fg-on-dark: var(--color-white);
+    --bg-1: var(--color-yellow);
+    --bg-2: var(--color-off-white);
+    --bg-3: var(--color-white);
+    --accent: var(--color-orange);
+
+    /* Spacing */
+    --space-2: 8px; --space-3: 16px; --space-4: 24px;
+    --space-5: 32px; --space-6: 48px; --space-7: 64px; --space-8: 96px;
+
+    /* Radius */
+    --radius-md: 8px; --radius-lg: 16px; --radius-xl: 24px; --radius-full: 9999px;
+
+    /* Shadows */
+    --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
+    --shadow-md: 0 6px 20px rgba(0,0,0,0.10);
+    --shadow-lg: 0 12px 40px rgba(0,0,0,0.14);
+
+    --max-width: 880px;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--bg-1);
+    color: var(--fg-2);
+    font-family: var(--font-body);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 var(--space-4);
+  }
+
+  /* Header */
+  header {
+    padding: var(--space-5) 0 var(--space-3);
+  }
+
+  .logo-img {
+    height: 56px;
+    width: auto;
+    display: block;
+  }
+
+  /* Hero */
+  .hero {
+    padding: var(--space-4) 0 var(--space-6);
+  }
+
+  .hero h1 {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    font-size: clamp(36px, 6vw, 56px);
+    line-height: 1.02;
+    margin: 0 0 var(--space-3);
+    color: var(--fg-1);
+  }
+
+  .hero p {
+    font-size: 18px;
+    max-width: 56ch;
+    margin: 0 0 var(--space-4);
+    color: var(--fg-2);
+  }
+
+  .hero .sub {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color-orange);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin: 0 0 var(--space-3);
+  }
+
+  /* Progress rail */
+  .rail {
+    display: flex;
+    gap: var(--space-3);
+    margin-top: var(--space-5);
+  }
+
+  .rail-step {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--fg-3);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  .rail-step .dot {
+    width: 28px;
+    height: 28px;
+    border-radius: var(--radius-full);
+    background: var(--color-white);
+    border: 1.5px solid var(--color-light-grey);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-body);
+    color: var(--fg-3);
+    flex-shrink: 0;
+    transition: all 200ms ease;
+  }
+
+  .rail-step.active .dot,
+  .rail-step.done .dot {
+    background: var(--color-orange);
+    border-color: var(--color-orange);
+    color: var(--color-white);
+  }
+
+  .rail-step.active { color: var(--fg-1); }
+  .rail-step.done { color: var(--fg-1); }
+
+  /* Step cards */
+  .step {
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    padding: var(--space-5);
+    margin-bottom: var(--space-4);
+    box-shadow: var(--shadow-sm);
+    transition: opacity 300ms ease;
+  }
+
+  .step.locked {
+    opacity: 0.45;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .step-head {
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-3);
+    margin-bottom: var(--space-3);
+  }
+
+  .step-num {
+    font-family: var(--font-display);
+    font-size: 40px;
+    color: var(--color-orange);
+    line-height: 1;
+  }
+
+  .step-head h2 {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    font-size: 26px;
+    margin: 0;
+    color: var(--fg-1);
+  }
+
+  .step-head .meta {
+    display: block;
+    font-size: 13px;
+    color: var(--fg-3);
+    font-weight: 500;
+    margin-top: 2px;
+  }
+
+  .step p.desc {
+    margin: 0 0 var(--space-4);
+    font-size: 15px;
+    color: var(--fg-2);
+  }
+
+  /* Buttons */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 14px 28px;
+    background: var(--color-orange);
+    color: var(--color-white);
+    border: none;
+    border-radius: var(--radius-md);
+    font-family: var(--font-body);
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    cursor: pointer;
+    transition: background 150ms ease;
+  }
+
+  .btn:hover { background: var(--color-orange-dark); }
+  .btn:active { background: var(--color-orange-darker); }
+
+  .btn:disabled {
+    background: var(--color-light-grey);
+    color: var(--fg-3);
+    cursor: not-allowed;
+  }
+
+  .btn-secondary {
+    background: var(--color-white);
+    color: var(--color-orange);
+    border: 1.5px solid var(--color-orange);
+  }
+
+  .btn-secondary:hover { background: var(--color-orange-tint); }
+
+  .confirm-row {
+    margin-top: var(--space-4);
+    padding-top: var(--space-4);
+    border-top: 1px solid var(--color-light-grey);
+  }
+
+  .confirm-note {
+    font-size: 14px;
+    color: var(--fg-3);
+    margin: 0 0 var(--space-3);
+  }
+
+  /* Docuseal embed container */
+  docuseal-form {
+    width: 100%;
+    min-height: 480px;
+    display: block;
+  }
+
+  /* Confirmation panel */
+  .done-panel {
+    background: var(--color-orange);
+    color: var(--color-white);
+    border-radius: var(--radius-lg);
+    padding: var(--space-6) var(--space-5);
+    text-align: left;
+    display: none;
+  }
+
+  .done-panel.show { display: block; }
+
+  .done-panel h2 {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    font-size: clamp(28px, 4vw, 40px);
+    margin: 0 0 var(--space-3);
+  }
+
+  .done-panel p {
+    font-size: 16px;
+    max-width: 52ch;
+    margin: 0 0 var(--space-2);
+  }
+
+  .done-panel .stamp {
+    display: inline-block;
+    background: var(--color-white);
+    color: var(--color-orange);
+    font-family: var(--font-display);
+    font-size: 13px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: var(--radius-full);
+    margin-bottom: var(--space-3);
+  }
+
+  /* Footer */
+  footer {
+    padding: var(--space-6) 0 var(--space-7);
+    text-align: center;
+  }
+
+  footer a {
+    color: var(--fg-1);
+    font-weight: 600;
+    text-decoration: none;
+    border-bottom: 1.5px solid var(--color-orange);
+  }
+
+  footer .small {
+    display: block;
+    margin-top: var(--space-2);
+    font-size: 13px;
+    color: var(--fg-3);
+  }
+
+  @media (max-width: 640px) {
+    .rail { flex-direction: column; gap: var(--space-2); }
+    .step { padding: var(--space-4); }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <header>
+    <img src="top-cuvee-logo.png" alt="Top Cuvée" class="logo-img">
+  </header>
+
+  <section class="hero">
+    <p class="sub">Wholesale · Getting you set up</p>
+    <h1>Right, let's get you pouring.</h1>
+    <p>Two quick steps and you're live. Sign the agreement, set up your direct debit, and we'll take it from there. Ten minutes, done.</p>
+
+    <div class="rail">
+      <div class="rail-step active" id="rail-1">
+        <span class="dot">1</span> Sign
+      </div>
+      <div class="rail-step" id="rail-2">
+        <span class="dot">2</span> Set up payment
+      </div>
+      <div class="rail-step" id="rail-3">
+        <span class="dot">3</span> Done
+      </div>
+    </div>
+  </section>
+
+  <!-- STEP 1: SIGN -->
+  <div class="step" id="step-1">
+    <div class="step-head">
+      <span class="step-num">01</span>
+      <div>
+        <h2>Sign the agreement</h2>
+        <span class="meta">Takes about two minutes</span>
+      </div>
+    </div>
+    <p class="desc">Your terms, as agreed on the call. Have a read, sign, and you're through to the next step.</p>
+
+    <!--
+      DOCUSEAL — FREE PLAN VERSION
+      Opens the hosted signing page in a new tab (no Pro embedding needed).
+      Buyer confirms they've signed with the button below, which unlocks step 2.
+      If your DocuSeal template settings support a "redirect after completion" URL,
+      this can be swapped for an automatic check instead of the manual button.
+    -->
+    <a class="btn" href="https://docuseal.com/d/bzzFHumhXqMveB" target="_blank" rel="noopener">Open the agreement to sign</a>
+
+    <div class="confirm-row">
+      <p class="confirm-note">Signed it? Come back here and confirm below.</p>
+      <button class="btn btn-secondary" id="signed-confirm-btn">I've signed, continue</button>
+    </div>
+  </div>
+
+  <!-- STEP 2: PAYMENT -->
+  <div class="step locked" id="step-2">
+    <div class="step-head">
+      <span class="step-num">02</span>
+      <div>
+        <h2>Set up your direct debit</h2>
+        <span class="meta">Takes about a minute</span>
+      </div>
+    </div>
+    <p class="desc">Standard Direct Debit through GoCardless. Fully covered by the guarantee scheme, nothing leaves your account until your first invoice.</p>
+
+    <div id="gc-dropin-container"></div>
+    <button class="btn" id="gc-open-btn" disabled>Set up Direct Debit</button>
+  </div>
+
+  <!-- STEP 3: CONFIRMATION -->
+  <div class="done-panel" id="done-panel">
+    <span class="stamp">You're in</span>
+    <h2>Signed, set up, sorted.</h2>
+    <p>That's everything done on your end. Josh will pick this up and get your first order moving; no forms, no faff, just wine on its way.</p>
+    <p>Any questions in the meantime, just reply to the email you had from Josh.</p>
+  </div>
+
+  <footer>
+    <a href="mailto:hello@topcuvee.com">hello@topcuvee.com</a>
+    <span class="small">Top Cuvée Wholesale · Wine for Everyone</span>
+  </footer>
+
+</div>
+
+<!--
+  GOCARDLESS DROP-IN
+  Reusable for every account: set up ONE Billing Request Template in the GoCardless
+  dashboard (Direct Debit / BACS, generic, no fixed amount), then drop its ID in below.
+  No backend call needed, same reasoning as the DocuSeal template above.
+-->
+<script src="https://pay.gocardless.com/billing/static/dropin/v2/initialise.js"></script>
+<script>
+  // ---- STEP 1 -> STEP 2 unlock (manual confirmation, free-plan version) ----
+  const step2 = document.getElementById('step-2');
+  const gcButton = document.getElementById('gc-open-btn');
+  const rail1 = document.getElementById('rail-1');
+  const rail2 = document.getElementById('rail-2');
+  const rail3 = document.getElementById('rail-3');
+  const donePanel = document.getElementById('done-panel');
+  const signedConfirmBtn = document.getElementById('signed-confirm-btn');
+
+  signedConfirmBtn.addEventListener('click', () => {
+    rail1.classList.remove('active');
+    rail1.classList.add('done');
+    rail2.classList.add('active');
+
+    signedConfirmBtn.disabled = true;
+    signedConfirmBtn.textContent = 'Confirmed';
+
+    step2.classList.remove('locked');
+    gcButton.disabled = false;
+    step2.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  });
+
+  // ---- STEP 2: GoCardless Drop-in ----
+  gcButton.addEventListener('click', () => {
+    const handler = GoCardlessDropin.create({
+      // Swap in your live Billing Request Template ID (starts "BRT")
+      billingRequestTemplateID: "BRT000311BHB9VW",
+      environment: "live", // switch to "sandbox" while testing
+      onSuccess: function (billingRequest, billingRequestFlow) {
+        rail2.classList.remove('active');
+        rail2.classList.add('done');
+        rail3.classList.add('active', 'done');
+
+        donePanel.classList.add('show');
+        donePanel.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      },
+      onExit: function (error, metadata) {
+        if (error) {
+          console.error('GoCardless Drop-in error', error);
+        }
+      }
+    });
+    handler.open();
+  });
+</script>
+
+</body>
+</html>
